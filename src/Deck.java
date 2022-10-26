@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public abstract class Deck {
+public class Deck {
     //Data Members
     private ArrayList<Card> deck;
 
@@ -31,7 +31,31 @@ public abstract class Deck {
 
     //Methods
     void shuffle(){
+        int index1, index2;
+        for (int i = 0; i < 50; i++){
+            index1 = (int) Math.floor(Math.random()*(deck.size()));
+            index2 = (int) Math.floor(Math.random()*(deck.size()));
+            swap(deck, index1, index2);
+        }
+    }
 
+    void cut(){
+        int index = (int) Math.floor(Math.random()*(deck.size()-1)+2);
+        ArrayList<Card> temp = new ArrayList<>();
+        for (int i = index; i < deck.size(); i++){
+            temp.add(deck.get(i));
+        }
+        for (int i = 0; i < index; i++){
+            temp.add(deck.get(i));
+        }
+        deck.clear();
+        for(int i = 0; i < temp.size(); i++){
+            deck.add(temp.get(i));
+        }
+    }
+
+    Card dealCard(){
+        return deck.remove(0);
     }
 
     void print(){
@@ -42,6 +66,11 @@ public abstract class Deck {
         }
     }
 
-    abstract Card dealCard();
-
+    private static void swap(ArrayList<Card> deck, int index1, int index2) {
+        Card temp = deck.get(index1);
+        deck.set(index1, deck.get(index2));
+        deck.set(index2, temp);
+    }
 }
+
+
