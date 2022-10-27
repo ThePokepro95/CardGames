@@ -1,9 +1,7 @@
 public class Card {
-    //Data Members
     private int value;
     private String suit;
 
-    //Constructors
     Card (){
         value = 1;
         suit = "spades";
@@ -14,7 +12,6 @@ public class Card {
         suit = s;
     }
 
-    //Getters and Setters
     int getValue(){
         return value;
     }

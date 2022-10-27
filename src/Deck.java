@@ -1,10 +1,8 @@
 import java.util.ArrayList;
 
 public class Deck {
-    //Data Members
     private ArrayList<Card> deck;
 
-    //Constructors
     Deck(){
         deck = new ArrayList<Card>();
         String suit = "";
@@ -29,7 +27,6 @@ public class Deck {
         }
     }
 
-    //Methods
     void shuffle(){
         int index1, index2;
         for (int i = 0; i < 50; i++){
@@ -55,7 +52,16 @@ public class Deck {
     }
 
     Card dealCard(){
+        if (deck.isEmpty()){
+            System.out.println("Deck is empty. Returning null.");
+            return null;
+        }
         return deck.remove(0);
+    }
+
+    boolean isEmpty(){
+        if (deck.isEmpty()) return true;
+        return false;
     }
 
     void print(){

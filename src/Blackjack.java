@@ -30,32 +30,46 @@ public class Blackjack extends Game {
         showDescription();
 
         printLine();
-        System.out.println(dealerHand + " Total: " + getHandValue(dealerHand));
+        System.out.println("Dealer: " + dealerHand + " | Total: " + getHandValue(dealerHand));
         System.out.println("\n\n\n\n\n");
-        System.out.println(playerHand + " Total: " + getHandValue(playerHand));
+        System.out.println("Player: " + playerHand + " | Total: " + getHandValue(playerHand) + "\n");
+
 
         boolean hitting = true;
+        boolean blackjack = false;
         boolean busted = false;
         while (hitting) {
             if (getHandValue(dealerHand) == 21) {
-                System.out.println("You Lose! Dealer has blackjack. Good luck next time!");
+                System.out.println("You lose! Dealer has blackjack. Good luck next time!");
+                hitting = false;
+                break;
+            } else if (getHandValue(playerHand) == 21) {
+                System.out.println("You win! You got blackjack! See you next time!");
                 hitting = false;
                 break;
             }
+
             System.out.println("Would you like to hit or stay? Type hit or stay then press enter.");
             hitOrStay = userInput.next();
-            hitOrStay.toLowerCase();
-            if (hitOrStay.equals("hit")) {
+            printLine();
+            if (hitOrStay.equalsIgnoreCase("hit")) {
                 playerHand.addToHand(deck.dealCard());
+                printSpace();
                 if (getHandValue(playerHand) > 21) {
-                    System.out.println(playerHand + " Total: " + getHandValue(playerHand));
+                    System.out.println("Player: " + playerHand + " | Total: " + getHandValue(playerHand));
                     busted = true;
                     hitting = false;
                     break;
+                } else if (getHandValue(playerHand) == 21) {
+                    hitting = false;
+                    break;
                 }
-                System.out.println(playerHand + " Total: " + getHandValue(playerHand));
-            } else if (hitOrStay.equals("stay")) {
+                System.out.println("Dealer: " + dealerHand + " | Total: " + getHandValue(dealerHand));
+                System.out.println("\n\n\n\n\n");
+                System.out.println("Player: " + playerHand + " | Total: " + getHandValue(playerHand));
+            } else if (hitOrStay.equalsIgnoreCase("stay")) {
                 hitting = false;
+                printSpace();
                 break;
             } else {
                 System.out.println("Please type in a proper input.");
@@ -64,6 +78,8 @@ public class Blackjack extends Game {
 
         if (busted) {
             System.out.println("You busted! Good luck next time!");
+        } else if (blackjack) {
+            System.out.println("You win! You got blackjack! See you next time!");
         } else {
             dealerSequence();
         }
@@ -114,15 +130,15 @@ public class Blackjack extends Game {
             dealerHand.addToHand(deck.dealCard());
         }
         printLine();
-        System.out.println(dealerHand + " Total: " + getHandValue(dealerHand));
+        System.out.println("Dealer: " + dealerHand + " Total: " + getHandValue(dealerHand));
         System.out.println("\n\n\n\n\n");
-        System.out.println(playerHand + " Total: " + getHandValue(playerHand));
+        System.out.println("Player: " + playerHand + " Total: " + getHandValue(playerHand));
         if (getHandValue(dealerHand) > 21){
-            System.out.println("You Win! Dealer busted. See you next time!");
+            System.out.println("You win! Dealer busted. See you next time!");
         } else if (getHandValue(dealerHand) > getHandValue(playerHand)){
-            System.out.println("You Lose! Dealer has a higher total. Good luck next time!");
+            System.out.println("You lose! Dealer has a higher total. Good luck next time!");
         } else if (getHandValue(dealerHand) < getHandValue(playerHand)){
-            System.out.println("You Win! You have a higher total. See you next time!");
+            System.out.println("You win! You have a higher total. See you next time!");
         } else {
             System.out.println("It's a tie. Better luck next time!");
         }

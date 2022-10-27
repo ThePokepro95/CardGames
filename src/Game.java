@@ -12,6 +12,9 @@ public abstract class Game {
         }
         System.out.println(line);
     }
+    static void printSpace(){
+        System.out.println("\n\n\n\n\n\n\n\n");
+    }
 }
 
 class Hand {

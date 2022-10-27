@@ -14,24 +14,26 @@ public class GameRunner {
         boolean playAgain = false;
         int userSelection = 0;
         while (runCollection) {
-            if (playAgain){
-            } else {
+            if (!playAgain) {
                 System.out.println(mainMenu);
                 userSelection = userInput.nextInt();
             }
             switch (userSelection) {
                 case 1:
+                    printSpace();
                     Blackjack bjGame = new Blackjack();
                     bjGame.playGame();
                     playAgain = playAgainChecker();
+                    printLine();
+                    printSpace();
                     break;
                 case 2:
-                    /*
-                        Baccarat bGame = new Baccarat();
-                        bGame.playGame();
-                        playAgain = playAgainChecker();
-                     */
-                    System.out.println("no game yet lulw");
+                    printSpace();
+                    Baccarat bGame = new Baccarat();
+                    bGame.playGame();
+                    playAgain = playAgainChecker();
+                    printLine();
+                    printSpace();
                     break;
                 case 3:
                     System.out.println("Thank you, come back soon!");
@@ -53,9 +55,13 @@ public class GameRunner {
         System.out.println(line);
     }
 
-    private static boolean playAgainChecker(){
+    private static void printSpace(){
+        System.out.println("\n\n\n\n\n\n\n\n");
+    }
+
+    private static boolean playAgainChecker() {
         Scanner userInput = new Scanner(System.in);
         System.out.println("Would you like to play again? Please enter yes or no.");
-        return userInput.next().toLowerCase().equals("yes");
+        return userInput.next().equalsIgnoreCase("yes");
     }
 }
