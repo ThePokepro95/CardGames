@@ -25,10 +25,6 @@ class Hand {
         hand.add(c);
     }
 
-    void removeFromHand(Card c){
-
-    }
-
     void removeFromHand(int index){
         hand.remove(index);
     }

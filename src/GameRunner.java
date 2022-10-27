@@ -7,7 +7,7 @@ public class GameRunner {
         mainMenu += "------------------------------ \n";
         mainMenu += "Please Select a Game! \n";
         mainMenu += "1. Blackjack \n";
-        mainMenu += "2. Go Fish \n";
+        mainMenu += "2. Baccarat \n";
         mainMenu += "3. Quit \n";
 
         boolean runCollection = true;
@@ -27,8 +27,8 @@ public class GameRunner {
                     break;
                 case 2:
                     /*
-                        GoFish gfGame = new GoFish();
-                        gfGame.playGame();
+                        Baccarat bGame = new Baccarat();
+                        bGame.playGame();
                         playAgain = playAgainChecker();
                      */
                     System.out.println("no game yet lulw");
